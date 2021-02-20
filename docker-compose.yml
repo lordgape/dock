@@ -24,12 +24,12 @@ services:
   parrot:
     container_name: parrot
     build:
-      context: ./www/parrot
+      context: ../www/parrot
       dockerfile: local.Dockerfile
     depends_on:
       - redis
     volumes:
-      - "./www/parrot/:/usr/src/app"
+      - "../www/parrot/:/usr/src/app"
     networks:
       pangaea-network:
         ipv4_address: 172.25.0.25
@@ -46,12 +46,12 @@ services:
   minion:
     container_name: minion
     build:
-      context: ./www/minion
+      context: ../www/minion
       dockerfile: local.Dockerfile
     depends_on:
       - parrot
     volumes:
-      - "./www/minion/:/usr/src/app"
+      - "../www/minion/:/usr/src/app"
     networks:
       pangaea-network:
         ipv4_address: 172.25.0.26
@@ -68,10 +68,10 @@ services:
   consumer:
       container_name: consumer
       build:
-        context: ./www/consumer
+        context: ../www/consumer
         dockerfile: local.Dockerfile
       volumes:
-        - "./www/consumer/:/usr/src/app"
+        - "../www/consumer/:/usr/src/app"
       networks:
         pangaea-network:
           ipv4_address: 172.25.0.27
